@@ -90,7 +90,8 @@ class AppRequestInterceptor(
     ): RequestInterceptor.InterceptionResponse? {
         // First we execute a quick check to see if this is a request we're interested in i.e. a
         // request triggered by the user and coming from AMO.
-        if (hasUserGesture && isSameDomain && uri.startsWith(AMO_BASE_URL)) {
+        // UPDATE: acctually, no.
+        if (hasUserGesture && isSameDomain/* && uri.startsWith(AMO_BASE_URL)*/) {
             // Check if this is a request to install an add-on.
             val matchResult = AMO_INSTALL_URL_REGEX.toRegex().find(uri)
             if (matchResult != null) {
